@@ -61,3 +61,63 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # mundose
+
+## ######################
+##      Instrucciones
+## ######################
+
+1) php artisan key:generate
+
+2) Abrir phpmyadmin y crear base de datosi con el nombre de 'laravel_mundose'
+
+3) Configurar base de datos en el .env situado en el raíz del proyecto
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=laravel_mundose
+DB_USERNAME=root
+DB_PASSWORD=
+
+4) php artisan migrate
+
+# Crear categories Table
+
+5.0) php artisan make:migration CreateCategoriesTable
+
+# Crear un seeder para llenar la tabla categories
+
+5.2) php artisan make:seed CategoriesSeeder
+
+# Linkear en database seeder para que inserte los registros
+
+5.4) $this->call(CategoriesSeeder::class);
+
+# Creamos Posts Table
+
+5.5) php artisan make:migration CreatePostsTable
+
+5.6) php artisan make:seed PostsSeeder
+
+# Cargar contenido de tablas
+
+6) php artisan db:seed
+
+# Compiamos welcome.blade y los renombramos a post
+
+# Crear PostController
+
+7) php artisan make:controller PostController
+
+# En caso de dar error de carga de controlador ... 
+# En web.php
+use App\Http\Controllers\PostController;
+Route::get('/posts-list', PostController::class . '@showList');
+
+# Crear un modelo para Posts
+
+9) php artisan make:model Post
+
+# Crear un modelo para Categories
+10) php artisan make:model Category
+
+
