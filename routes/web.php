@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,4 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/post-list', PostController::class . '@showList');
-//Route::get('/post-list', 'PostController@showList');
+
+Route::get('send-mail', function () {
+    $details = [
+        'title' => 'Mail from MundosE app',
+        'body' => 'Este esta es una prueba smtp'
+    ];
+    \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\sendContact($details));
+});
