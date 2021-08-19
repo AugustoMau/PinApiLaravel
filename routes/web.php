@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 // listado de posts
 Route::get('/post/list', 'App\Http\Controllers\PostController@showList');
@@ -33,3 +33,9 @@ Route::post('/post-save-edit', 'App\Http\Controllers\PostController@savePostEdit
 
 //Route::get('/post-save', PostController::class . '@save')->name('savepost');
 Route::post('/post/delete/{id}', 'App\Http\Controllers\PostController@deleteForm');
+
+
+//Route::get('send-mail', function () {
+
+//});
+

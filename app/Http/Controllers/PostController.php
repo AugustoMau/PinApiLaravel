@@ -34,15 +34,25 @@ class PostController extends Controller
 
     public function save(Request $request)
     {
+        try{
+            Post::create([
+                'category_id' => $request->category,
+                'title' => $request->title,
+                'summary'=>$request->summary,
+                'image' => '',
+                'description' => $request->description,
+                'author'=> $request->author
+            ]);
 
-        Post::create([
-            'category_id' => $request->category,
-            'title' => $request->title,
-            'summary'=>$request->summary,
-            'image' => '',
-            'description' => $request->description,
-            'author'=> $request->author
-        ]);
+            $details = [
+                'title' => 'Post title: ' . $request->title,
+                'body' => $request->description
+            ];
+            \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\sendPost($details));
+
+        }catch(\ErrorException $e){
+            dd($e->getMessage());
+        }
         return redirect('/post/list');
     }
 

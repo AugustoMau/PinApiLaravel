@@ -42,6 +42,13 @@ class ApiPostController extends Controller
                 'description' => $request->description,
                 'author'=> $request->author
             ]);
+
+            $details = [
+                'title' => 'Post title: ' . $request->title,
+                'body' => $request->description
+            ];
+            \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\sendPost($details));
+
             return json_encode(['status'=>'ok']);
 
         }catch(\ErrorException $e){
