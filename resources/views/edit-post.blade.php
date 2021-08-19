@@ -22,7 +22,7 @@
     </head>
     <body class="antialiased">
         <h1>Editar post</h1>
-        <form action="{{route('savepostedit')}}" method="post">
+        <form action="{{route('savepostedit')}}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="{{$post->id}}">
             {{ csrf_field() }}
             <table>
@@ -51,6 +51,10 @@
                 <tr>
                     <td>Description</td>
                     <td><input type="text" name="description" value="{{$post->description}}"></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="file" name="image" value="{{$post->image}}"></td>
                 </tr>
                 <tr>
                     <td>Author</td>

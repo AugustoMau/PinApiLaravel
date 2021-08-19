@@ -29,7 +29,7 @@
             @if(count($posts)>=1)
                 <table>
                 <tr>
-                    <th>ID</th>
+                    <th>IMAGE</th>
                     <th>TITLE</th>
                     <th>SUMMARY</th>
                     <th>DESCRIPTION</th>
@@ -39,7 +39,7 @@
                 @foreach($posts as $post)
                     <tr>
                         <td>
-                            {{$post->id}}
+                            <img src="{{asset('storage') . '/' . $post->image }}" width="102" height="102">
                         </td>
                         <td>
                             {{$post->title}}
