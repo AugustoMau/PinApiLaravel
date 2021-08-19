@@ -32,7 +32,7 @@ Route::get('/post-show-form-edit/{id}', 'App\Http\Controllers\PostController@sho
 Route::post('/post-save-edit', 'App\Http\Controllers\PostController@savePostEdit')->name('savepostedit');
 
 //Route::get('/post-save', PostController::class . '@save')->name('savepost');
-Route::post('/post/delete/{id}', 'App\Http\Controllers\PostController@deleteForm');
+Route::get('/post/delete/{id}', 'App\Http\Controllers\PostController@deleteForm');
 
 
 //Route::get('send-mail', function () {

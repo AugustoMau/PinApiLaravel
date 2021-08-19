@@ -23,6 +23,7 @@
     <body class="antialiased">
         <h1>Eliminar post</h1>
         <form action="{{route('api_delete_post')}}" method="post">
+            {{ csrf_field() }}
             <input type="hidden" name="id" value="{{$post->id}}">
             <table>
                 <tr>

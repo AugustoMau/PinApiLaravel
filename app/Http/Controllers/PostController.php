@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Post;
 class PostController extends Controller
 {
     public function showList()

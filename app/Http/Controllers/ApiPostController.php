@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
@@ -34,11 +35,15 @@ class ApiPostController extends Controller
     public function create(Request $request)
     {
         try{
+            $image = '';
+            if($request->hasFile('image')){
+                $image = $request->file('image')->store('uploads', 'public');
+            }
             Post::create([
                 'category_id' => $request->category,
                 'title' => $request->title,
                 'summary'=>$request->summary,
-                'image' => '',
+                'image' => $image,
                 'description' => $request->description,
                 'author'=> $request->author
             ]);
@@ -61,6 +66,13 @@ class ApiPostController extends Controller
         $post = Post::find($request->id);
 
         if(!empty($post)){
+
+            if($request->hasFile('image')){
+                Storage::delete('public/' . $post->image);
+                $image = $request->file('image')->store('uploads', 'public');
+                $post->image = $image;
+            }
+
             $post->category_id = $request->category;
             $post->title = $request->title;
             $post->summary = $request->summary;
