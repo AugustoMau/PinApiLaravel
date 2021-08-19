@@ -10,9 +10,7 @@ class PostController extends Controller
     public function showList()
     {
         $posts = Post::all();
-        return json_encode($posts);
-        //return view('post-list', ['posts' => $posts] );
-
+        return view('post-list', ['posts' => $posts] );
     }
 
     public function showForm()
@@ -23,9 +21,15 @@ class PostController extends Controller
 
     public function showFormEdit(Request $request)
     {
-        $categories = Category::all();
-        $post = Post::find($request->id);
-        return view('edit-post', ['post'=>$post, 'category'=>$categories]);
+        try{
+            $categories = Category::all();
+            $post = Post::find($request->id);
+            return view('edit-post', ['post'=>$post, 'category'=>$categories]);
+
+        }catch(\ErrorException $e){
+            dd($e->getMessage());
+        }
+
     }
 
     public function save(Request $request)
@@ -39,13 +43,13 @@ class PostController extends Controller
             'description' => $request->description,
             'author'=> $request->author
         ]);
+        return redirect('/post/list');
     }
 
     public function savePostEdit(Request $request)
     {
-        if(isset($request->id)){ // es un post ya existente
-
-            $post = Post::find($request->id);
+        $post = Post::find($request->id);
+        if(!empty($post)){
             $post->category_id = $request->category;
             $post->title = $request->title;
             $post->summary = $request->summary;
@@ -54,6 +58,20 @@ class PostController extends Controller
             $post->author = $request->author;
             $post->save();
         }
+        return redirect('/post/list');
     }
 
+    public function deleteForm(Request $request)
+    {
+        try{
+            $categories = Category::all();
+            $post = Post::find($request->id);
+            if(!empty($post)){
+                return view('delete-post', ['post'=>$post, 'category'=>$categories]);
+            }
+            dd('empty post');
+        }catch(\ErrorException $e){
+            dd($e->getMessage());
+        }
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+//use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,16 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/post-list', PostController::class . '@showList');
+// listado de posts
+Route::get('/post/list', 'App\Http\Controllers\PostController@showList');
+
 // formulario para crear un post
-Route::get('/post-show-form', PostController::class . '@showForm');
+Route::get('/post/new', 'App\Http\Controllers\PostController@showForm');
+
 // metodo para guardar un post
-Route::get('/post-save', PostController::class . '@save')->name('savepost');
+Route::post('/post/save', 'App\Http\Controllers\PostController@save')->name('savepost');
 
 // editar un post
-Route::get('/post-show-form-edit/{id}', PostController::class . '@showFormEdit');
+Route::get('/post-show-form-edit/{id}', 'App\Http\Controllers\PostController@showFormEdit');
 
-Route::get('/post-save-edit', PostController::class . '@savePostEdit')->name('savepost_edit');
+Route::post('/post-save-edit', 'App\Http\Controllers\PostController@savePostEdit')->name('savepostedit');
 
 //Route::get('/post-save', PostController::class . '@save')->name('savepost');
-Route::get('/post-delete/{id}', PostController::class . '@delete');
+Route::post('/post/delete/{id}', 'App\Http\Controllers\PostController@deleteForm');

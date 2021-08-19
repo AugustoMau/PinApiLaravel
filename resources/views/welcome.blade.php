@@ -44,7 +44,7 @@
                         </g>
                     </svg>
                 </div>
-
+                <div style="background-color:red; text-align:center;border-radius:9px;color:white"><a href="{{url('/post/list/');}}"><h3>Ir a Posts</h3></a></div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">

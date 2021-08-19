@@ -21,10 +21,9 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>Editar post</h1>
-        <form action="{{route('savepostedit')}}" method="post">
+        <h1>Eliminar post</h1>
+        <form action="{{route('api_delete_post')}}" method="post">
             <input type="hidden" name="id" value="{{$post->id}}">
-            {{ csrf_field() }}
             <table>
                 <tr>
                     <td>Titulo</td>

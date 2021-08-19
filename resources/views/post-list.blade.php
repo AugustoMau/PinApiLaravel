@@ -18,11 +18,24 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            td{border: solid 1px;}
+            th{color: white; background-color: black;}
         </style>
     </head>
     <body class="antialiased">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+    <a href="{{url('/post/new');}}">agregar post</a>
             @if(count($posts)>=1)
                 <table>
+                <tr>
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>SUMMARY</th>
+                    <th>DESCRIPTION</th>
+                    <th>CATEGORY</th>
+                    <th>ACTIONS</th>
+                </tr>
                 @foreach($posts as $post)
                     <tr>
                         <td>
@@ -35,7 +48,14 @@
                             {{$post->summary}}
                         </td>
                         <td>
+                            {{$post->description}}
+                        </td>
+                        <td>
                         {{$post->getCategory->name}}          
+                        </td>
+                        <td>
+                            <a href="{{url('/post-show-form-edit/');}}/{{$post->id}}">editar</a> | 
+                            <a href="{{url('/post/delete/');}}/{{$post->id}}">eliminar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -43,5 +63,7 @@
             @else
                 {{'No se encontraron posts'}}
             @endif
+        </div>
+    </div>
     </body>
 </html>

@@ -22,7 +22,8 @@
     </head>
     <body class="antialiased">
     <h1>Nuevo post</h1>
-        <form action="{{route('savepost')}}" method="get">
+        <form action="{{route('savepost')}}" method="post">
+        {{ csrf_field() }}
             <table>
                 <tr>
                     <td>Titulo</td>
