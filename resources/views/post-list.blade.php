@@ -18,52 +18,29 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            td{border: solid 1px;}
-            th{color: white; background-color: black;}
         </style>
     </head>
     <body class="antialiased">
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-    <a href="{{url('/post/new');}}">agregar post</a>
-            @if(count($posts)>=1)
+             @if (count($posts)>=1)
                 <table>
-                <tr>
-                    <th>IMAGE</th>
-                    <th>TITLE</th>
-                    <th>SUMMARY</th>
-                    <th>DESCRIPTION</th>
-                    <th>CATEGORY</th>
-                    <th>ACTIONS</th>
-                </tr>
-                @foreach($posts as $post)
-                    <tr>
-                        <td>
-                            <img src="{{asset('storage') . '/' . $post->image }}" width="102" height="102">
-                        </td>
-                        <td>
-                            {{$post->title}}
-                        </td>
-                        <td>
-                            {{$post->summary}}
-                        </td>
-                        <td>
-                            {{$post->description}}
-                        </td>
-                        <td>
-                        {{$post->getCategory->name}}          
-                        </td>
-                        <td>
-                            <a href="{{url('/post-show-form-edit/');}}/{{$post->id}}">editar</a> | 
-                            <a href="{{url('/post/delete/');}}/{{$post->id}}">eliminar</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </table>
-            @else
-                {{'No se encontraron posts'}}
-            @endif
-        </div>
-    </div>
+
+                 @foreach ($posts as $post)
+                 
+                 <tr>
+                     <td>
+                         {{$post->id}}
+                     </td>
+                     <td>
+                         {{$post->title}}
+                    </td>
+                    <td>
+                         {{$post->summary}}
+                    </td>
+                 </tr>
+                 </table>
+                 @endforeach
+         @else
+                 {{'No se encontraron posts'}}
+             @endif     
     </body>
 </html>

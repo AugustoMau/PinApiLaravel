@@ -1,4 +1,4 @@
-<?php
+<?php //el seeder realiza cambios en los registros de las tablas
 
 namespace Database\Seeders;
 
@@ -16,15 +16,14 @@ class CategoriesSeeder extends Seeder
         \DB::table('categories')->insert(
             array(
                 0 => array(
-                    'name'          => "Deportes",
-                    'description'   => "Categoria para el ambito de deportes"
+                    'name'         => 'Deportes',
+                    'description'  => 'Categoria para el ambito de deportes'
                 ),
-                1=> array(
-                    'name'          => "Finanzas",
-                    'description'   => "Categoria deFinanzas"
+                1 => array(
+                    'name'         => 'Finanzas',
+                    'description'  => 'Categoria de Finanzas'
                 )
             )
         );
     }
-
 }

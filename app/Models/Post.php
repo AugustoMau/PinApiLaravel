@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts';
+    protected $table = 'posts'; //esta es una tabla dentro de la base de datos
     protected $fillable = [
         'id',
         'category_id',
@@ -17,8 +17,8 @@ class Post extends Model
         'summary',
         'image',
         'description',
-        'author'
-    ];
+        'author' //dentro del array nombramos los campos que contiene la tabla
+    ]; //fillable son arrays y nos cuida de ataques, si nosotros no nombramos algun campo, no nos lo va a mostrar
 
     public function getCategory()
     {

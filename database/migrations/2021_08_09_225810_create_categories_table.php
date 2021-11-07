@@ -1,4 +1,4 @@
-<?php
+<?php //el migration va a crear la tabla para despues con el seeder llenarla de contenido
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
