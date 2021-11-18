@@ -8,7 +8,7 @@ use App\Mail\SendData;
 
 class NewUserController extends Controller
 {
-    public function saveUsuarios(Request $request)
+    public function usuarionuevo(Request $request)
     {
         try {
             if($request->email) {
@@ -27,7 +27,7 @@ class NewUserController extends Controller
                      
                 ];
 
-                Mail::to("proyecto25wsmpt@gmail.com")->send(new SendData($details));
+                Mail::to("augustomauro.cba@gmail.com")->send(new SendData($details));
 
                 //return json_encode(['status' => 'ok']);
                 return $request;
