@@ -8,36 +8,46 @@ use App\Mail\SendData;
 
 class NewUserController extends Controller
 {
-    public function usuarionuevo(Request $request)
+    public function createusuario(Request $request)
     {
-        try {
-            if($request->email) {
+        try{
+            $name = "no viene" ;
+           if (isset($request->name) && $request->name !=null ){
+              $name= $request->name;
+           }
 
-                NewUser::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                    'message' => $request->message
-                ]);
-                $details = [
-                    'title' => 'Nombre: '. $request->name, 
-                    'body' => 'Email: '. $request->email,
-                    'section' => 'Mensaje: '. $request->message,
-                  
-                     
-                ];
+           $email = uniqid() . '@gmail.com';
+           if (isset($request->email) && $request->email != null ){
+              $email= $request->email;
+           }
 
-               // Mail::to("augustomauro.cba@gmail.com")->send(new SendData($details));
+           $phone = "no viene phone" ;
+           if (isset($request->phone) && $request->phone != null ){
+              $phone= $request->phone;
+           }
 
-                //return json_encode(['status' => 'ok']);
-                return $request;
-            }
-            
-            //return $request; //return json_encode($request);
+           $message = "no viene message" ;
+           if (isset($request->message) && $request->message != null ){
+              $message= $request->message;
+           }
 
-        } catch (\ErrorException $e) {
-            return json_encode(['status' => 'faild', 'message' => $e->getMessage()]);
-        }
-    }
+          Usuario::create([
+              'name' =>  $name,
+              'email'=> $email,
+              'phone' => $phone,
+              'message' => $message
+          ]); 
 
+           $details = [
+              'title' => 'Post title: ' . $name, //$request->title,
+              'body' => $request-> $message //description
+          ];
+          \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\sendPost($details)); 
+
+          return json_encode(['status'=>'ok']);
+
+       }catch(\ErrorException $e){
+          return json_encode(['status'=>'faild', 'message'=>$e->getMessage()]);
+      } 
+  }
 }
