@@ -17,17 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-// listado json de posts
-Route::get('/post-list', 'App\Http\Controllers\ApiPostController@showList');
-
-// data json para editar un post
-Route::get('/edit-form/{id}', 'App\Http\Controllers\ApiPostController@showDataForm');
 
 // metodo para guardar un post
-Route::post('/post-save', 'App\Http\Controllers\ApiPostController@create')->name('api_save_post');
+Route::post('/newuser', 'App\Http\Controllers\NewUserController@saveUsuarios');
 
-// guardar edicion de post
-Route::post('/post-save-edit', 'App\Http\Controllers\ApiPostController@update')->name('api_save_edit_post');
-
-//Route::get('/post-save', PostController::class . '@save')->name('savepost');
-Route::post('/post-delete', 'App\Http\Controllers\ApiPostController@delete')->name('api_delete_post');
