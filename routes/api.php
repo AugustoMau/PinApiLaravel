@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 // metodo para guardar un post
-Route::post('/usuarionuevo', 'App\Http\Controllers\NewUserController@usuarionuevo');
+Route::post('validate', 'App\Http\Controllers\NewUserController@usuarionuevo');
+
 
