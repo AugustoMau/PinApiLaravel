@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // metodo para guardar un post
-Route::get('/usuarionuevo', 'App\Http\Controllers\NewUserController@usuarionuevo');
+Route::post('/usuarionuevo', 'App\Http\Controllers\NewUserController@usuarionuevo')->name('usuarionuevo');
 
 
