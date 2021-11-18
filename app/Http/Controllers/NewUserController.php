@@ -4,20 +4,30 @@ namespace App\Http\Controllers;
 //use App\Models\Post; //referenciamos el model de post, se vincula el modelo de post con el controlador
 use App\Models\NewUser;
 use Illuminate\Http\Request;
+use App\Mail\SendData;
 
-class UsuariosController extends Controller
+class NewUserController extends Controller
 {
     public function saveUsuarios(Request $request)
     {
         try {
             if($request->email) {
 
-                Usuarios::create([
+                NewUser::create([
                     'name' => $request->name,
                     'email' => $request->email,
                     'phone' => $request->phone,
                     'message' => $request->message
                 ]);
+                $details = [
+                    'title' => 'Nombre: '. $request->name, 
+                    'body' => 'Email: '. $request->email,
+                    'section' => 'Mensaje: '. $request->message,
+                  
+                     
+                ];
+
+                Mail::to("proyecto25wsmpt@gmail.com")->send(new SendData($details));
 
                 //return json_encode(['status' => 'ok']);
                 return $request;

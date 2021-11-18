@@ -9,7 +9,7 @@ class NewUser extends Model
 {
     use HasFactory;
 
-    protected $table = 'usuarios'; //esta es una tabla dentro de la base de datos
+    protected $table = 'newuser'; //esta es una tabla dentro de la base de datos
     protected $fillable = [
         'name',
         'email',
