@@ -27,7 +27,7 @@ class NewUserController extends Controller
                      
                 ];
 
-                Mail::to("augustomauro.cba@gmail.com")->send(new SendData($details));
+               // Mail::to("augustomauro.cba@gmail.com")->send(new SendData($details));
 
                 //return json_encode(['status' => 'ok']);
                 return $request;
