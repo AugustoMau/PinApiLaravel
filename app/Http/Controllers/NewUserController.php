@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class NewUserController extends Controller
 {
-   public function createusuario(Request $request){
+   public function createusuario (Request $request){
 
       $validator =  Validator::make($request->all(),[
       'name'=>'required|max:191',
