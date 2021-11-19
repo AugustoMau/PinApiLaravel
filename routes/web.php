@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\NewUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +16,7 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/usuarionuevo', 'App\Http\Controllers\NewUserController@createusuario');
 
 
